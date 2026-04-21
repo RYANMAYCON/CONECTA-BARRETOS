@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  
+  --color-primary-blue: #0066ff;
+  --color-whatsapp-green: #22c55e;
+  --color-app-bg: #f5f8ff;
+  --color-app-text: #050b1a;
+  --color-app-text-muted: #475569;
+  --color-border-light: #e8efff;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-app-bg text-app-text selection:bg-blue-100 selection:text-blue-900;
+    background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-6;
+  }
+}
+
+::selection {
+  background: #bfdbfe;
+  color: #1e3a8a;
+}

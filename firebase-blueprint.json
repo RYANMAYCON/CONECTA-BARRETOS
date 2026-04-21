@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "Professional": {
+      "title": "Professional",
+      "description": "Information about a service provider / Business",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string", "description": "Name of the business or professional" },
+        "ownerId": { "type": "string", "description": "UID of the user who owns this record" },
+        "service": { "type": "string", "description": "Title of the service offered" },
+        "description": { "type": "string", "description": "Detailed description of services" },
+        "whatsapp": { "type": "string", "description": "WhatsApp number with country code (e.g., 5511...)" },
+        "city": { "type": "string", "description": "City where the professional operates" },
+        "category": { "type": "string", "description": "Category of the service" },
+        "rating": { "type": "number", "description": "Average rating of the professional" },
+        "isPremium": { "type": "boolean", "description": "Whether the professional is a premium member" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the profile was created" }
+      },
+      "required": ["companyName", "ownerId", "service", "whatsapp", "city", "category"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "A review for a professional",
+      "type": "object",
+      "properties": {
+        "professionalId": { "type": "string", "description": "ID of the professional being reviewed" },
+        "rating": { "type": "number", "description": "Star rating (1-5)" },
+        "comment": { "type": "string", "description": "User's feedback" },
+        "userName": { "type": "string", "description": "Name of the reviewer" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the review was written" }
+      },
+      "required": ["rating", "userName"]
+    }
+  },
+  "firestore": {
+    "/professionals/{profId}": {
+      "schema": "Professional",
+      "description": "Collection of all professionals"
+    },
+    "/professionals/{profId}/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Subcollection of reviews for a specific professional"
+    }
+  }
+}
